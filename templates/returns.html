@@ -7,6 +7,8 @@
         <th>Book</th>
         <th>Student</th>
         <th>Issued On</th>
+        <th>Days Used</th>
+        <th>Fine (Rs)</th>
         <th>Action</th>
     </tr>
 
@@ -15,6 +17,20 @@
         <td>{{ i.book_title }}</td>
         <td>{{ i.student_name }} ({{ i.student_roll }})</td>
         <td>{{ i.issue_date }}</td>
+
+        <td>
+            {{ (date.today() - i.issue_date).days }}
+        </td>
+
+        <td>
+            {% set days = (date.today() - i.issue_date).days %}
+            {% if days > 7 %}
+                {{ (days - 7) * 5 }}
+            {% else %}
+                0
+            {% endif %}
+        </td>
+
         <td>
             <form method="post">
                 <input type="hidden" name="issue_id" value="{{ i.id }}">
