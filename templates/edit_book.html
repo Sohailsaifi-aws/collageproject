@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Edit Book</h3>
+
+<form method="post">
+    <div class="mb-3">
+        <label>Title</label>
+        <input type="text" class="form-control" name="title" value="{{ book.title }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Author</label>
+        <input type="text" class="form-control" name="author" value="{{ book.author }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label>ISBN</label>
+        <input type="text" class="form-control" name="isbn" value="{{ book.isbn }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Publisher</label>
+        <input type="text" class="form-control" name="publisher" value="{{ book.publisher }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Quantity</label>
+        <input type="number" class="form-control" name="quantity" value="{{ book.quantity }}" min="1">
+    </div>
+
+    <button class="btn btn-primary">Update</button>
+    <a href="{{ url_for('books') }}" class="btn btn-secondary">Cancel</a>
+</form>
+
+{% endblock %}

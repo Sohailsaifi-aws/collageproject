@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Dashboard</h4>
+<a class="btn btn-sm btn-success" href="{{ url_for('books') }}">Manage Books</a>
+<a class="btn btn-sm btn-warning" href="{{ url_for('issue') }}">Issue Book</a>
+<a class="btn btn-sm btn-info" href="{{ url_for('returns') }}">Return Book</a>
+<hr>
+<h5>All Books</h5>
+<table class="table">
+  <tr><th>Title</th><th>Author</th><th>Qty</th></tr>
+  {% for b in books %}
+  <tr><td>{{ b.title }}</td><td>{{ b.author }}</td><td>{{ b.quantity }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

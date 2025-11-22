@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Books List</h3>
+
+<div class="d-flex justify-content-between mb-3">
+    <form method="get" class="d-flex">
+        <input type="text" name="q" class="form-control" placeholder="Search by title, author, isbn" value="{{ request.args.get('q') }}">
+        <button class="btn btn-secondary ms-2">Search</button>
+    </form>
+    <a class="btn btn-primary" href="{{ url_for('add_book') }}">+ Add Book</a>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Publisher</th>
+        <th>Qty</th>
+        <th>Action</th>
+    </tr>
+
+    {% for b in books %}
+    <tr>
+        <td>{{ b.title }}</td>
+        <td>{{ b.author }}</td>
+        <td>{{ b.isbn }}</td>
+        <td>{{ b.publisher }}</td>
+        <td>{{ b.quantity }}</td>
+        <td>
+            <a href="{{ url_for('edit_book', id=b.id) }}" class="btn btn-sm btn-warning">Edit</a>
+            <form action="{{ url_for('delete_book', id=b.id) }}" method="post" style="display:inline;">
+                <button class="btn btn-sm btn-danger" onclick="return confirm('Delete this book?')">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+body {
+    background: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.table {
+    background: white;
+}
+
+.btn {
+    border-radius: 3px;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+}
